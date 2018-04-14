@@ -29,7 +29,7 @@ public class Preprocess {
 
 			//Make a filter
 			StringToWordVector filter = new StringToWordVector();
-			
+
 			//Make a tokenizer
 			WordTokenizer wt = new WordTokenizer();
 			String delimiters = " \r\t\n.,;:\'\"()?!-><#$\\%&*+/@^_=[]{}|`~0123456789";
@@ -37,7 +37,7 @@ public class Preprocess {
 			filter.setTokenizer(wt);
 			//Inform filter about dataset
 			filter.setInputFormat(rawData);
-			
+
 			//number of words to keep     
 			filter.setWordsToKeep(5000);
 
@@ -50,7 +50,7 @@ public class Preprocess {
 			filter.setStemmer(stemmer);
 
 			//filter.setLowerCaseTokens(true);
-			
+
 			//use stopwords list to remove stop words
 			WordsFromFile stopWords = new WordsFromFile();
 			stopWords.setStopwords(new File("stopwords.txt"));
@@ -68,7 +68,7 @@ public class Preprocess {
 			//set class index to the last attribute
 			//here we tell the dataset that the class is the last element/field/column
 			dataFiltered.setClassIndex(dataFiltered.numAttributes() - 1);
-		
+
 			//save the dataset as ARFF file
 			ArffSaver saver = new ArffSaver();
 			//saver.setInstances(rawData);
